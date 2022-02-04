@@ -67,7 +67,6 @@ const App = () => {
       <TouchableOpacity activeOpacity={0.8} style={styles.resetBtn} onPress={reset}>
         <Text style={styles.resetText}>Reset</Text>
       </TouchableOpacity>
-      <Text style={styles.credit}>Made with 💙 by Arif</Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -81,8 +80,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   incrementbtn: {
-    marginTop: 100,
-    marginBottom : 50,
+    marginTop: 80,
+    marginBottom : 40,
     backgroundColor: '#00ABF4',
     width: 150,
     height: 150,
@@ -109,9 +108,6 @@ const styles = StyleSheet.create({
     fontSize : 25,
     // fontFamily : 'roboto-regular',
   },
-  credit : {
-    marginTop : 20
-  }
 
 });
 
