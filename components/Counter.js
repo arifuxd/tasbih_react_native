@@ -3,7 +3,7 @@ import React from 'react';
 import CircularProgress from 'react-native-circular-progress-indicator'
 
 const Counter = ({count, setCount}) => {
-
+  console.log(count)
   
   return (
     <View style={styles.counter}>

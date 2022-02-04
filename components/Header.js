@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         marginTop : 40,
     },
     headerTextStyle : {
-        // fontFamily : 'roboto-bold',
+        fontFamily : 'roboto-regular',
         fontWeight : 'bold',
         fontSize : 30,
         textTransform : 'uppercase'
