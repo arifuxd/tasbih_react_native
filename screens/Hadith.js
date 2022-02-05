@@ -1,33 +1,40 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, FlatList, TouchableOpacity } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
-const ListItem = ({item, navigation}) => {
-  return (
-    <TouchableOpacity activeOpacity={0.5} style={styles.listStyle} onPress={()=> navigation.navigate('hadithversedetails', item)}>
-      <Text style={styles.listTextStyle}>{item.nameBengali}</Text>
-    </TouchableOpacity>
-  );
-};
+
+const HadithDetails = ({navigation, route}) => {
+
+  console.log(route.params)
+
+  return(
+    <ScrollView >
+    <Text>{route.params.hadithArabic}</Text>
+    <Text>{route.params.hadithBengali}</Text>
+    </ScrollView>
+)
+}
+
+
+
 
 const HadithVerseDetails = ({navigation, route}) => {
-  
-  const [hadithData, sethadithData] = useState([])
-  useEffect(()=>{
+    const [hadithData, sethadithData] = useState([])
+
+      useEffect(()=>{
     fetch(`https://alquranbd.com/api/hadith/bukhari/${route.params.chSerial}`)
     .then(res => res.json())
     .then(data => sethadithData(data))
   }, [])
 
-  console.log(hadithData)
 
   return(
     <FlatList
     data={hadithData}
     renderItem={({item})=>{
       return (
-    <TouchableOpacity activeOpacity={0.5} style={styles.listStyle} onPress={()=> navigation.navigate('hadithversedetails', item)}>
+    <TouchableOpacity activeOpacity={0.5} style={styles.listStyle} onPress={()=> navigation.navigate('hadithdetails', item)}>
     <Text style={styles.listTextStyle}>{item.topicName}</Text>
     </TouchableOpacity>
       )
@@ -37,7 +44,7 @@ const HadithVerseDetails = ({navigation, route}) => {
   )
 }
 
-const HadithDetails = ({navigation}) => {
+const AllHadith = ({navigation}) => {
   const [data, setData] = useState([])
   useEffect(()=>{
     fetch('https://alquranbd.com/api/hadith/bukhari')
@@ -45,13 +52,15 @@ const HadithDetails = ({navigation}) => {
     .then(data => setData(data))
   }, [])
 
-  console.log(data)
-
   return(
     <FlatList
     data={data}
     renderItem={({item})=>{
-      return <ListItem navigation={navigation} item={item}/>
+      return (
+        <TouchableOpacity activeOpacity={0.5} style={styles.listStyle} onPress={()=> navigation.navigate('hadithversedetails', item)}>
+        <Text style={styles.listTextStyle}>{item.nameBengali}</Text>
+      </TouchableOpacity>
+      )
       
     }}
     />
@@ -65,8 +74,9 @@ const Hadith = () => {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name='hadithdetails' component={HadithDetails}/>
+      <Stack.Screen name='allhadith' component={AllHadith}/>
       <Stack.Screen name='hadithversedetails' component={HadithVerseDetails}/>
+      <Stack.Screen name='hadithdetails' component={HadithDetails}/>
  
 
     </Stack.Navigator>
@@ -83,7 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor : '#fff'
   },
   listTextStyle : {
-    fontFamily : 'roboto-regular',
+    
     fontSize : 17
 
   }
