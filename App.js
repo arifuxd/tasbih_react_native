@@ -44,10 +44,11 @@ const App = () => {
 
         <Tab.Navigator
         screenOptions={({ route }) => ({
-          headerStyle: {
-            backgroundColor: '#00abf4',
-          },
-          headerTintColor: '#fff',
+          // headerStyle: {
+          //   backgroundColor: '#00abf4',
+          // },
+          // headerTintColor: '#fff',
+          headerShown : false ,
 
                  tabBarIcon: ({ focused, color, size }) => {
             let iconName;

@@ -17,6 +17,8 @@ const styles = StyleSheet.create({
         fontFamily : 'roboto-regular',
         fontWeight : 'bold',
         fontSize : 30,
+        padding : 10,
+        color : '#333333',
         textTransform : 'uppercase'
     }
 });

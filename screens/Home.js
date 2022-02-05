@@ -51,7 +51,7 @@ const Home = () => {
     return(
       <View style={globalStyles.container}>
       <StatusBar style="auto" />
-      {/* <Header /> */}
+      <Header />
       <Counter count={count} setCount={setCount} />
       <TouchableOpacity activeOpacity={0.2} style={styles.incrementbtn} onPress={increment}>
         <Text style={styles.incrementText}>+</Text>

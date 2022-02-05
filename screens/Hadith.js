@@ -74,7 +74,7 @@ const Hadith = () => {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name='allhadith' component={AllHadith}/>
+      <Stack.Screen name='allhadith' options={{headerTitle : 'Bukhari'}} component={AllHadith}/>
       <Stack.Screen name='hadithversedetails' component={HadithVerseDetails}/>
       <Stack.Screen name='hadithdetails' component={HadithDetails}/>
  
